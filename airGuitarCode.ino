@@ -204,12 +204,8 @@ void loop() {
 
         if(accAbs >= 1000)
         {
-          	Joystick.button(5,1);
+          Serial.println("Guitar hit snare");
         }
-	else
-	{
-		Joystick.button(5,0);
-	}
         
         lastACC = currentACC;
         delay(16);
