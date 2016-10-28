@@ -12,6 +12,15 @@ MPU6050 mpu;
 
 #define INTERRUPT_PIN 2 
 #define LED_PIN 13 
+
+//button defenitions
+const int buttonPin0 = 14; 
+const int buttonPin1 = 15; 
+const int buttonPin2 = 16; 
+const int buttonPin3 = 17; 
+int buttonState = 0;
+
+
 bool blinkState = false;
 
 // MPU control/status vars
@@ -45,6 +54,15 @@ void dmpDataReady() {
 
 
 void setup() {
+
+    //button instantiate             
+    Serial.begin(38400);
+    pinMode(buttonPin0, INPUT);
+    pinMode(buttonPin1, INPUT);
+    pinMode(buttonPin2, INPUT);
+    pinMode(buttonPin3, INPUT);
+
+  
     // join I2C bus (I2Cdev library doesn't do this automatically)
     #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
         Wire.begin();
@@ -114,6 +132,35 @@ void setup() {
 }
 
 void loop() {
+
+    //================================================
+    //button read
+     if (digitalRead(buttonPin0) == LOW) {
+      Joystick.button(0,1);
+     } else {
+      Joystick.button(0,0);
+     }
+    
+    if (digitalRead(buttonPin1) == LOW) {
+     Joystick.button(1,1);
+    } else {
+     Joystick.button(1,0);
+    }
+  
+    if (digitalRead(buttonPin2) == LOW) {
+     Joystick.button(2,1);
+      } else {
+     Joystick.button(2,0);
+    }
+  
+    if (digitalRead(buttonPin3) == LOW) {
+     Joystick.button(3,1);
+   } else {
+      Joystick.button(3,0);
+    }
+   //================================================
+
+ 
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
 
