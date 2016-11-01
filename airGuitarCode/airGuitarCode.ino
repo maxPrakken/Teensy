@@ -205,6 +205,7 @@ void loop() {
         if(accAbs >= 1000)
         {
           Joystick.button(5,1);
+          Serial.println("snare has been hit");
         }
         else
         {
@@ -213,6 +214,6 @@ void loop() {
         
         
         lastACC = currentACC;
-        delay(16);
+        
     }
 }
