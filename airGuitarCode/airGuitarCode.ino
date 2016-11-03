@@ -9,11 +9,10 @@ MPU6050 mpu;
 
 #define OUTPUT_READABLE_YAWPITCHROLL
 
-
 #define INTERRUPT_PIN 2 
 #define LED_PIN 13 
 
-//button defenitions
+//button 
 const int buttonPin0 = 14; 
 const int buttonPin1 = 15; 
 const int buttonPin2 = 16; 
@@ -51,6 +50,8 @@ void dmpDataReady() {
 
 
 void setup() {
+    Joystick.useManualSend(true);
+
 
     //button instantiate             
     Serial.begin(38400);
@@ -58,6 +59,9 @@ void setup() {
     pinMode(buttonPin1, INPUT);
     pinMode(buttonPin2, INPUT);
     pinMode(buttonPin3, INPUT);
+
+    pinMode(0, INPUT_PULLUP);
+    pinMode(1, INPUT_PULLUP);
 
   
     // join I2C bus (I2Cdev library doesn't do this automatically)
@@ -132,26 +136,30 @@ void loop() {
 
     //================================================
     //button read
-     if (digitalRead(buttonPin0) == LOW) {
+     if (digitalRead(buttonPin0) == HIGH) {
       Joystick.button(0,1);
+      Serial.println("button 0 pushed");
      } else {
       Joystick.button(0,0);
      }
     
-    if (digitalRead(buttonPin1) == LOW) {
+    if (digitalRead(buttonPin1) == HIGH) {
      Joystick.button(1,1);
+     Serial.println("button 1 pushed");
     } else {
      Joystick.button(1,0);
     }
   
-    if (digitalRead(buttonPin2) == LOW) {
+    if (digitalRead(buttonPin2) == HIGH) {
      Joystick.button(2,1);
+     Serial.println("button 2 pushed");
       } else {
      Joystick.button(2,0);
     }
   
-    if (digitalRead(buttonPin3) == LOW) {
+    if (digitalRead(buttonPin3) == HIGH) {
      Joystick.button(3,1);
+     Serial.println("button 3 pushed");
    } else {
       Joystick.button(3,0);
     }
@@ -214,6 +222,7 @@ void loop() {
         
         
         lastACC = currentACC;
-        
+        Joystick.send_now();
     }
+   
 }
