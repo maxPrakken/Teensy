@@ -12,7 +12,6 @@ bool blinkState = false;
 void setup() {
 
     //button instantiate             
-    Serial.begin(19200);
     pinMode(buttonPin0, INPUT);
     pinMode(buttonPin1, INPUT);
     pinMode(buttonPin2, INPUT);
@@ -23,6 +22,7 @@ void setup() {
     pinMode(1, INPUT_PULLUP);
    
     Serial.begin(9600);
+    Keyboard.print("Hello World "); 
 }
 
 void loop() {
@@ -31,35 +31,35 @@ void loop() {
     //================================================
     //button read
      if (digitalRead(buttonPin0) == HIGH) {
-      Joystick.button(0,1);
+      Joystick.button(0,HIGH);
       Serial.println("button 0 pushed");
      } else {
       Joystick.button(0,0);
      }
     
     if (digitalRead(buttonPin1) == HIGH) {
-     Joystick.button(1,1);
+     Joystick.button(1,HIGH);
      Serial.println("button 1 pushed");
     } else {
      Joystick.button(1,0);
     }
   
     if (digitalRead(buttonPin2) == HIGH) {
-     Joystick.button(2,1);
+     Joystick.button(2,HIGH);
      Serial.println("button 2 pushed");
       } else {
      Joystick.button(2,0);
     }
   
     if (digitalRead(buttonPin3) == HIGH) {
-     Joystick.button(3,1);
+     Joystick.button(3,HIGH);
      Serial.println("button 3 pushed");
    } else {
       Joystick.button(3,0);
     }
 
      if (digitalRead(buttonPin4) == HIGH) {
-     Joystick.button(4,1);
+     Joystick.button(4,HIGH);
      Serial.println("snare has been hit");
    } else {
       Joystick.button(4,0);
