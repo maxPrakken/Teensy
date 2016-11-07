@@ -1,2 +1,2 @@
-we use a programm hugo wrote to read out text files, the first thing is the time in witch the note should appear,
+we use a programm hugo wrote to read out text files, the first thing is the time in wich the note should appear,
 the second, third and fourth decide on witch finger the note should be.
